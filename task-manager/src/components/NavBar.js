@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// 💡 Importing the external CSS file to meet assignment requirements
-import '../styles/Navigation.css'; 
+// 💡 IMPORTANT: We are importing the new, correctly named CSS file
+import '../styles/NavBar.css'; 
 
 const NavBar = () => {
   return (
