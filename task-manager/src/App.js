@@ -1,6 +1,6 @@
 import React from 'react';
-// Import the necessary components for routing
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+// ⚠️ FIX: Updated imports for React Router DOM v6 (using Routes instead of Switch)
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 
 // Import the components and views you verified exist
 import NavBar from './components/NavBar'; 
@@ -17,23 +17,18 @@ const App = () => {
         {/* The navigation bar is visible on all pages */}
         <NavBar />
 
-        {/* Switch ensures only one Route is shown at a time */}
-        <Switch>
+        {/* ⚠️ FIX: Routes is used in v6 instead of Switch */}
+        <Routes>
           {/* Route 1: The Contact Form view */}
-          <Route path="/contact">
-            <ContactView />
-          </Route>
+          <Route path="/contact" element={<ContactView />} />
 
           {/* Route 2: The main ToDo list view */}
-          <Route path="/todos">
-            <TodosView />
-          </Route>
+          <Route path="/todos" element={<TodosView />} />
 
           {/* Default Route: Redirects to /todos if no path is specified */}
-          <Route path="/">
-            <TodosView />
-          </Route>
-        </Switch>
+          {/* This is a convenience for when the user hits the root URL */}
+          <Route path="/" element={<TodosView />} />
+        </Routes>
       </div>
     </Router>
   );
