@@ -1,13 +1,52 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'; // 💡 NEW: Import hook to send actions
+import { toggleTodo, deleteTodo } from '../actions/todoActions'; // 💡 NEW: Import actions
 
-//  receive 'text' and 'completed'parent
-const TodoItem = ({ text, completed }) => {
+// Receives a single todo object (id, text, completed) as props
+const TodoItem = ({ todo }) => {
+  const dispatch = useDispatch();
+
   return (
     <li style={{
-      textDecoration: completed ? 'line-through' : 'none',
-      padding: '10px',
-      borderBottom: '1px solid #eee'
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '10px 0',
+      borderBottom: '1px solid #eee',
+      fontSize: '1.1em',
+      backgroundColor: todo.completed ? '#f0fff0' : 'white', // Visual cue for completion
     }}>
+      {/* Display the task text */}
+      <span 
+        style={{ 
+          textDecoration: todo.completed ? 'line-through' : 'none',
+          cursor: 'pointer',
+          flexGrow: 1, 
+          color: todo.completed ? '#888' : '#333'
+        }}
+        // Toggles the completion status when clicked (CRUD - Update)
+        onClick={() => dispatch(toggleTodo(todo.id))}
+      >
+        {todo.text}
+      </span>
+
+      {/* Delete Button (CRUD - Delete) */}
+      <button
+        onClick={() => dispatch(deleteTodo(todo.id))}
+        style={{
+          padding: '5px 10px',
+          backgroundColor: '#e74c3c', 
+          color: 'white',
+          border: 'none',
+          borderRadius: '3px',
+          cursor: 'pointer',
+          marginLeft: '10px'
+        }}
+      >
+        Delete
+      </button>
     </li>
   );
 };
+
+export default TodoItem;
