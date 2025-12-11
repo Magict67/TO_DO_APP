@@ -1,18 +1,19 @@
 import React from 'react';
-// 💡 FIX: Import the new TodoInput component
 import TodoInput from '../components/TodoInput'; 
-// We will add the TodoList component here in a later step
+// 💡 FIX: Import the new list component
+import TodoList from '../components/TodoList'; 
 
 const TodosView = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', textAlign: 'center' }}>
       <h2>Task List (Todos)</h2>
-      <p>This is where the todo list functionality will go.</p>
 
-      {/* 💡 FIX: Render the TodoInput Component */}
+      {/* The input form for adding tasks */}
       <TodoInput /> 
 
-      {/* TodoList will be rendered here later */}
+      {/* 💡 FIX: The list display area */}
+      <TodoList /> 
+
     </div>
   );
 };
