@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'; // 💡 NEW: Import hook to send actions
-import { toggleTodo, deleteTodo } from '../actions/todoActions'; // 💡 NEW: Import actions
+import { useDispatch } from 'react-redux'; // add hook to send actions
+import { toggleTodo, deleteTodo } from '../actions/todoActions'; // Import actions
 
-// Receives a single todo object (id, text, completed) as props
+// Rcv single todo object (id, text, completed)
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
 
@@ -14,9 +14,9 @@ const TodoItem = ({ todo }) => {
       padding: '10px 0',
       borderBottom: '1px solid #eee',
       fontSize: '1.1em',
-      backgroundColor: todo.completed ? '#f0fff0' : 'white', // Visual cue for completion
+      backgroundColor: todo.completed ? '#f0fff0' : 'white', // Visual cue
     }}>
-      {/* Display the task text */}
+      {/* Display task text */}
       <span 
         style={{ 
           textDecoration: todo.completed ? 'line-through' : 'none',
@@ -24,7 +24,7 @@ const TodoItem = ({ todo }) => {
           flexGrow: 1, 
           color: todo.completed ? '#888' : '#333'
         }}
-        // Toggles the completion status when clicked (CRUD - Update)
+        // Click to Toggle completion status (CRUD)
         onClick={() => dispatch(toggleTodo(todo.id))}
       >
         {todo.text}
