@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoInput from '../components/TodoInput'; 
-// 💡 FIX: Import the new list component
+// Import new list component
 import TodoList from '../components/TodoList'; 
 
 const TodosView = () => {
