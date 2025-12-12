@@ -18,7 +18,7 @@ const TodoList = () => {
 
   return (
     <ul style={{ listStyle: 'none', padding: 0, width: '500px', margin: '20px auto', textAlign: 'left' }}>
-      {/* Map over the tasks and render a TodoItem for each one */}
+      {/* Map over the tasks and make TodoItem for each one */}
       {todos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
