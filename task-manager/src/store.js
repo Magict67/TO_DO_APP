@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
-import rootReducer from './reducers'; // Import the combined reducers
+import rootReducer from './reducers'; // Import combo reducers
 
-// Create the Redux store
+// Make Redux store
 const store = createStore(
   rootReducer,
-  // This is necessary for the Redux DevTools extension to work in the browser
+  // Make Redux DevTools extension work in browser
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
 );
 
