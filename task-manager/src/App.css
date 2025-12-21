@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+/* Custom Rule 1: Main Container for Side-by-Side */
+.todo-container {
+  display: flex;
+  flex-direction: row; /* items side-by-side */
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Custom Rule 2: Style Input Section */
+.input-section {
+  flex: 1;
+  margin-right: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Custom Rule 3: Style the List Section */
+.list-section {
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
