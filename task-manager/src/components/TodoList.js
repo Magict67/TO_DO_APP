@@ -1,28 +1,49 @@
 import React from 'react';
-import { useSelector } from 'react-redux'; // Hook to read state from Redux
-import TodoItem from './TodoItem'; // Import the item component
+import { useSelector, useDispatch } from 'react-redux'; // Added useDispatch
+import { toggleTodo, deleteTodo, setVisibilityFilter } from '../actions/todoActions'; // Added setVisibilityFilter
+import TodoItem from './TodoItem';
 
 const TodoList = () => {
-  // useSelector reads 'todos' array from Redux store
-  // set state slice name to 'tasks' in rootReducer (state.tasks.todos)
-  const todos = useSelector(state => state.tasks.todos); 
+  const dispatch = useDispatch();
+  
+  // 1. Get both the todos AND the current filter from Redux
+  const todos = useSelector(state => state.tasks.todos);
+  const activeFilter = useSelector(state => state.tasks.visibilityFilter);
 
-  // If list empty, show silly message
-  if (todos.length === 0) {
-    return (
-      <p style={{ marginTop: '30px', fontSize: '1.2em', color: '#555' }}>
-        Yippie! No tasks! Mr. Snuffleupagus has left the building! Add another below
-      </p>
-    );
-  }
+  // 2. Logic to filter the tasks before we display them
+  const getVisibleTodos = (todos, filter) => {
+    switch (filter) {
+      case 'SHOW_COMPLETED':
+        return todos.filter(t => t.completed);
+      case 'SHOW_ACTIVE':
+        return todos.filter(t => !t.completed);
+      case 'SHOW_ALL':
+      default:
+        return todos;
+    }
+  };
+
+  const visibleTodos = getVisibleTodos(todos, activeFilter);
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0, width: '500px', margin: '20px auto', textAlign: 'left' }}>
-      {/* Map over the tasks and make TodoItem for each one */}
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
-    </ul>
+    <div>
+      {/* 3. Filter Buttons */}
+      <div style={{ marginBottom: '20px' }}>
+        <button onClick={() => dispatch(setVisibilityFilter('SHOW_ALL'))} style={{ fontWeight: activeFilter === 'SHOW_ALL' ? 'bold' : 'normal' }}>All</button>
+        <button onClick={() => dispatch(setVisibilityFilter('SHOW_ACTIVE'))} style={{ margin: '0 10px', fontWeight: activeFilter === 'SHOW_ACTIVE' ? 'bold' : 'normal' }}>Incomplete</button>
+        <button onClick={() => dispatch(setVisibilityFilter('SHOW_COMPLETED'))} style={{ fontWeight: activeFilter === 'SHOW_COMPLETED' ? 'bold' : 'normal' }}>Completed</button>
+      </div>
+
+      {visibleTodos.length === 0 ? (
+        <p>No tasks found for this filter!</p>
+      ) : (
+        <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left' }}>
+          {visibleTodos.map(todo => (
+            <TodoItem key={todo.id} todo={todo} />
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
