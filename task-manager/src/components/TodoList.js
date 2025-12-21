@@ -6,11 +6,11 @@ import TodoItem from './TodoItem';
 const TodoList = () => {
   const dispatch = useDispatch();
   
-  // 1. Get both the todos AND the current filter from Redux
+  // 1. Get both todos AND current filter from Redux
   const todos = useSelector(state => state.tasks.todos);
   const activeFilter = useSelector(state => state.tasks.visibilityFilter);
 
-  // 2. Logic to filter the tasks before we display them
+  // 2. Logic to filter the tasks before display
   const getVisibleTodos = (todos, filter) => {
     switch (filter) {
       case 'SHOW_COMPLETED':
