@@ -64,3 +64,50 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+/* Custom Rule 4: Navigation Bar Container */
+nav {
+  background-color: #2c3e50;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+/* Custom Rule 5: Navigation Links */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+/* Custom Rule 6: Navigation Link Hover Effect */
+nav a:hover {
+  color: #3498db;
+}
+
+/* Custom Rule 7: Form Input Styling */
+input[type="text"], input[type="email"], textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Custom Rule 8: Form Input Focus (The glow when you click) */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Custom Rule 9: Headings style */
+h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Custom Rule 10: General Page Padding */
+.App {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
