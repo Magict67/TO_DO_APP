@@ -1,0 +1,25 @@
+.navbar {
+  display: flex; /*logo and links align horizontally */
+  justify-content: space-between; /* space between logo and links */
+  align-items: center; /* Center items vertically */
+  padding: 15px 30px;
+  background-color: #2c3e50; /* Dark background color */
+  color: white;
+  border-bottom: 3px solid #4CAF50; /* Green accent line */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Rule 6: Shadow for depth */
+  width: 100%; /* spans full width */
+  box-sizing: border-box; /*  padding/border in width */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 30px; /*Spac between links */
+  font-weight: 500;
+  transition: color 0.3s; 
+  font-size: 1.1em; 
+}
+
+.nav-links a:hover {
+  color: #90ee90; /* Hover color */
+}
